@@ -9,7 +9,6 @@ UpgradeInfo=$(apt list --upgradable)
 UpgradableCount=$(($(echo -n "$UpgradeInfo" | grep -c '^')-1))
 
 # upgrade
-
 if [ $UpgradableCount -ne 0 ]
 then
     apt update
