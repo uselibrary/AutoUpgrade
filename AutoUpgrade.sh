@@ -10,7 +10,7 @@ UpgradableCount=$(($(echo -n "$UpgradeInfo" | grep -c '^')-1))
 
 # upgrade
 
-if [$UpgradableCount != 0 ]
+if [ $UpgradableCount -ne 0 ]
 then
     apt update
     apt upgrade -y
@@ -23,14 +23,3 @@ then
     echo "$UpgradeInfo" >> /usr/local/AutoUpgrade/upgrade.log
     echo ""
 fi
-
-# case $UpgradableCount in  
-#     0) echo 'No upgradable available'
-#     ;;
-#     *) echo 'Upgrading'
-#     apt upgrade -y
-#     apt autoremove -y
-#     time=$(date +"%T")
-#     curl -s -o /dev/null "https://api.telegram.org/bot$Token/sendMessage?chat_id=$ChatID&text=$UpgradableCount upgraded at $time"
-#     ;;
-# esac
