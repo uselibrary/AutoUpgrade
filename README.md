@@ -6,11 +6,17 @@ Debian 自动更新脚本。
 
 文件位于`/usr/local/AutoUpgrade/`中，其中`AutoUpgrade.sh`为脚本，使用`crontab`实现每天凌晨3点进行检查更新，`upgrade.log`为日志，包含更新的时间和内容。
 
+```
+wget --no-check-certificate -O AutoUpgradeInstall.sh https://raw.githubusercontent.com/uselibrary/AutoUpgrade/main/install.sh && chmod +x AutoUpgradeInstall.sh && bash AutoUpgradeInstall.sh
+```
+
 ---
 
 Upgrade automatically for Debain
 
 Run the code as root. There is opetion to notice you by telegram bot. If you input "N", you will not have noticed atfer the system was upgraded. Or, you need input token and chat id of your telegram bot.
+
+The files locate at `/usr/local/AutoUpgrade/`. `AutoUpgrade.sh` is the script which relies on `crontab` to upgrade daily (3 am). `upgrade.log` is log, including upgrade time and content.
 
 ```
 wget --no-check-certificate -O AutoUpgradeInstall.sh https://raw.githubusercontent.com/uselibrary/AutoUpgrade/main/install.sh && chmod +x AutoUpgradeInstall.sh && bash AutoUpgradeInstall.sh
