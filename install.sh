@@ -6,4 +6,7 @@ apt install curl wget -y
 
 mkdir /usr/local/AutoUpgrade
 cd /usr/local/AutoUpgrade
+
+touch upgrade.log
+
 wget --no-check-certificate -O AutoUpgrade.sh https://raw.githubusercontent.com/uselibrary/AutoUpgrade/main/AutoUpgrade.sh && chmod +x AutoUpgrade.sh

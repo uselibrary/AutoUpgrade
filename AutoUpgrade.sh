@@ -14,9 +14,13 @@ if [$UpgradableCount != 0 ]
 then
     apt update
     apt upgrade -y
+    echo "Sleep 5 sec for CPU load."
+    sleep 5
     apt autoremove -y
     time=$(date +"%T")
     curl -s -o /dev/null "https://api.telegram.org/bot$Token/sendMessage?chat_id=$ChatID&text=$UpgradableCount upgraded at $time"
+    echo "$time" >> /usr/local/AutoUpgrade/upgrade.log
+    echo "$UpgradeInfo"
 fi
 
 # case $UpgradableCount in  
@@ -29,3 +33,5 @@ fi
 #     curl -s -o /dev/null "https://api.telegram.org/bot$Token/sendMessage?chat_id=$ChatID&text=$UpgradableCount upgraded at $time"
 #     ;;
 # esac
+
+
