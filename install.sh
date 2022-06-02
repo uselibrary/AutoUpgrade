@@ -15,8 +15,8 @@ read -p "Do you need telegram notification after upgraded (y/n)? " notice
 case ${notice:0:1} in
     y|Y )
         echo Yes
-        read -p "Plese input Token of telegram bot? " TOKEN
-        read -p "Plese input ChatID of telegram bot? " ChatID
+        read -p "Plese input Token of telegram bot: " TOKEN
+        read -p "Plese input ChatID of telegram bot: " ChatID
         sed -i "s/Token=/Token=${TOKEN}/g" /usr/local/AutoUpgrade/AutoUpgrade.sh
         sed -i "s/ChatID=/ChatID=${ChatID}/g" /usr/local/AutoUpgrade/AutoUpgrade.sh
     ;;
