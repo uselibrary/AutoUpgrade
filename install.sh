@@ -17,8 +17,8 @@ case ${notice:0:1} in
         echo Yes
         read -p "Plese input Token of telegram bot? " TOKEN
         read -p "Plese input ChatID of telegram bot? " ChatID
-        sed -i "s/Token=/${TOKEN}/g" /usr/local/AutoUpgrade/AutoUpgrade.sh
-        sed -i "s/ChatID=/${ChatID}/g" /usr/local/AutoUpgrade/AutoUpgrade.sh
+        sed -i "s/Token=/Token=${TOKEN}/g" /usr/local/AutoUpgrade/AutoUpgrade.sh
+        sed -i "s/ChatID=/ChatID=${ChatID}/g" /usr/local/AutoUpgrade/AutoUpgrade.sh
     ;;
     n|N )
         sed -i "/^Token\b/Id" /usr/local/AutoUpgrade/AutoUpgrade.sh
