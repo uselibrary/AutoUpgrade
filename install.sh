@@ -4,40 +4,13 @@
 apt update
 apt install curl wget -y
 
-# install AutoUpgrade and config
+# install AutoUpgrade
 mkdir /usr/local/AutoUpgrade
 cd /usr/local/AutoUpgrade
 touch upgrade.log
 wget --no-check-certificate -O AutoUpgrade.sh https://raw.githubusercontent.com/uselibrary/AutoUpgrade/main/AutoUpgrade.sh && chmod +x AutoUpgrade.sh
 
-echo "Do you need telegram notification after upgraded? default No"
-read -p "Please input: Y or N" notice
-
-if [ notice -eq Y]
-then 
-
-
-read -p "Are you sure? " -n 1 -r
-echo    # (optional) move to a new line
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    # do dangerous stuff
-fi
-
-
-read -p "Please input: Y or N  " notice
-echo    # (optional) move to a new line
-if [[ ! $notice =~ ^[Yy]$ ]]
-then
-    echo "Y"
-elif [[ ! $notice =~ ^[Yy]$ ]]
-then
-    echo "N"
-else
-    exit
-fi
-
-
+# AutoUpgrade config
 read -p "Do you need telegram notification after upgraded (y/n)? " notice
 case ${notice:0:1} in
     y|Y )
@@ -58,12 +31,8 @@ case ${notice:0:1} in
     ;;
 esac
 
-
-
-
-sed -i "/^Token\b/Id" AutoUpgrade.sh
-sed -i "/^ChatID\b/Id" AutoUpgrade.sh
-sed -i "/^    curl\b/Id" AutoUpgrade.sh
-
-
 # contab task
+crontab -l | { cat; echo "0 3 * * * /bin/bash /usr/local/AutoUpgrade/AutoUpgrade.sh"; } | crontab -
+
+echo "AutoUpgrade Installed"
+echo "System will upgrade automatically everyday at 3am."
