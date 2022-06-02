@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Auto Upgrade for Debian, Version 0.1
+# June 2, 2022. via htttps://PA.CI
+
 # Token and ChatID of telegram bot
 Token=
 ChatID=
