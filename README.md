@@ -14,7 +14,7 @@ wget --no-check-certificate -O AutoUpgradeInstall.sh https://raw.githubuserconte
 
 Upgrade automatically for Debain
 
-Run the code as root. There is opetion to notice you by telegram bot. If you input "N", you will not have noticed atfer the system was upgraded. Or, you need input token and chat id of your telegram bot.
+Run the code as root. There is opetion to notice you by telegram bot. If you input "N", you will not have noticed atfer the system was upgraded. Or, you need input token and chat id of your telegram bot who will notice you once the system upgraded.
 
 The files locate at `/usr/local/AutoUpgrade/`. `AutoUpgrade.sh` is the script which relies on `crontab` to upgrade daily (3 am). `upgrade.log` is log, including upgrade time and content.
 
