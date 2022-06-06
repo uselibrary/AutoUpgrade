@@ -12,6 +12,7 @@ apt install wget -y
 if [ -e /usr/local/AutoUpgrade/AutoUpgrade.sh ]
 then
     rm -rf /usr/local/AutoUpgrade/AutoUpgrade.sh
+    cd /usr/local/AutoUpgrade
     wget --no-check-certificate -O AutoUpgrade.sh https://raw.githubusercontent.com/uselibrary/AutoUpgrade/main/AutoUpgrade.sh && chmod +x AutoUpgrade.sh
 else
     mkdir /usr/local/AutoUpgrade
