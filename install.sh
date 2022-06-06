@@ -5,7 +5,7 @@
 
 # install dependencies
 apt update
-apt install curl wget -y
+apt install wget -y
 
 # check older folder
 # install/upgrade AutoUpgrade
@@ -31,7 +31,7 @@ fi
 read -p "Do you need telegram notification after upgraded (y/n)? " notice
 case ${notice:0:1} in
     y|Y )
-        echo Yes
+        apt install curl -y
         read -p "Plese input Token of telegram bot: " TOKEN
         read -p "Plese input ChatID of telegram bot: " ChatID
         sed -i "s/Token=/Token=${TOKEN}/g" /usr/local/AutoUpgrade/AutoUpgrade.sh
