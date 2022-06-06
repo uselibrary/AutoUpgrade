@@ -1,17 +1,31 @@
 #!/usr/bin/env bash
 
-# Auto Upgrade for Debian, Version 0.1
+# Auto Upgrade for Debian, Version 0.2
 # June 2, 2022. via htttps://PA.CI
 
 # install dependencies
 apt update
 apt install curl wget -y
 
+# check older folder
+# install/upgrade AutoUpgrade
+if [ -e /usr/local/AutoUpgrade/AutoUpgrade.sh ]
+then
+    rm -rf /usr/local/AutoUpgrade/AutoUpgrade.sh
+    wget --no-check-certificate -O AutoUpgrade.sh https://raw.githubusercontent.com/uselibrary/AutoUpgrade/main/AutoUpgrade.sh && chmod +x AutoUpgrade.sh
+else
+    mkdir /usr/local/AutoUpgrade
+    cd /usr/local/AutoUpgrade
+    touch upgrade.log
+    wget --no-check-certificate -O AutoUpgrade.sh https://raw.githubusercontent.com/uselibrary/AutoUpgrade/main/AutoUpgrade.sh && chmod +x AutoUpgrade.sh
+fi
+
+
 # install AutoUpgrade
-mkdir /usr/local/AutoUpgrade
-cd /usr/local/AutoUpgrade
-touch upgrade.log
-wget --no-check-certificate -O AutoUpgrade.sh https://raw.githubusercontent.com/uselibrary/AutoUpgrade/main/AutoUpgrade.sh && chmod +x AutoUpgrade.sh
+# mkdir /usr/local/AutoUpgrade
+# cd /usr/local/AutoUpgrade
+# touch upgrade.log
+# wget --no-check-certificate -O AutoUpgrade.sh https://raw.githubusercontent.com/uselibrary/AutoUpgrade/main/AutoUpgrade.sh && chmod +x AutoUpgrade.sh
 
 # AutoUpgrade config
 read -p "Do you need telegram notification after upgraded (y/n)? " notice
