@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Auto Upgrade for Debian, Version 0.2
+# Auto Upgrade for Debian, Version 0.2.1
 # June 2, 2022. via htttps://PA.CI
 
 # install dependencies
@@ -19,14 +19,8 @@ else
     cd /usr/local/AutoUpgrade
     touch upgrade.log
     wget --no-check-certificate -O AutoUpgrade.sh https://raw.githubusercontent.com/uselibrary/AutoUpgrade/main/AutoUpgrade.sh && chmod +x AutoUpgrade.sh
+    crontab -l | { cat; echo "0 3 * * * /bin/bash /usr/local/AutoUpgrade/AutoUpgrade.sh > /dev/null 2>&1"; } | crontab -
 fi
-
-
-# install AutoUpgrade
-# mkdir /usr/local/AutoUpgrade
-# cd /usr/local/AutoUpgrade
-# touch upgrade.log
-# wget --no-check-certificate -O AutoUpgrade.sh https://raw.githubusercontent.com/uselibrary/AutoUpgrade/main/AutoUpgrade.sh && chmod +x AutoUpgrade.sh
 
 # AutoUpgrade config
 read -p "Do you need telegram notification after upgraded (y/n)? " notice
@@ -50,7 +44,7 @@ case ${notice:0:1} in
 esac
 
 # contab task
-crontab -l | { cat; echo "0 3 * * * /bin/bash /usr/local/AutoUpgrade/AutoUpgrade.sh"; } | crontab -
+# crontab -l | { cat; echo "0 3 * * * /bin/bash /usr/local/AutoUpgrade/AutoUpgrade.sh > /dev/null 2>&1"; } | crontab -
 
 echo "AutoUpgrade Installed"
 echo "System will upgrade automatically everyday at 3am."
