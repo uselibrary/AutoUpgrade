@@ -19,7 +19,7 @@ else
     cd /usr/local/AutoUpgrade
     touch upgrade.log
     wget --no-check-certificate -O AutoUpgrade.sh https://raw.githubusercontent.com/uselibrary/AutoUpgrade/main/AutoUpgrade.sh && chmod +x AutoUpgrade.sh
-    crontab -l | { cat; echo "0 3 * * * /bin/bash /usr/local/AutoUpgrade/AutoUpgrade.sh > /dev/null 2>&1"; } | crontab -
+    crontab -l | { cat; echo "0 3 * * *  /bin/bash /usr/local/AutoUpgrade/AutoUpgrade.sh > /dev/null 2>&1"; } | crontab -
 fi
 
 # AutoUpgrade config
